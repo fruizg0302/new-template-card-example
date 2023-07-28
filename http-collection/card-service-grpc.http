@@ -1,0 +1,6 @@
+proto < ../card-service-grpc/src/main/proto/card-service.proto
+
+GRPC localhost:9010/CardService/CreateCard
+{
+  "name": "card-test-name"
+}

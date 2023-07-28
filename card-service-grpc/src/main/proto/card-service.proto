@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.paloit.card.grpc";
+option java_outer_classname = "CardStubs";
+
+package com.paloit.card.grpc;
+
+import "google/protobuf/wrappers.proto";
+
+service CardService {
+    rpc CreateCard (CardDto) returns (CreateCardResponse);
+    rpc GetCards (GetCardsRequest) returns (GetCardsResponse);
+    rpc GetCard (GetCardRequest) returns (GetCardResponse);
+    rpc UpdateCard (CardDto) returns (UpdateCardResponse);
+}
+
+message CardDto {
+    google.protobuf.StringValue id = 1;
+    string name = 2;
+}
+
+message GetCardRequest {
+    string id = 1;
+}
+
+message GetCardResponse {
+        CardDto card = 1;
+}
+
+message GetCardsRequest {
+    int32 start_page = 1;
+    int32 page_size = 2;
+}
+
+message GetCardsResponse {
+    repeated CardDto card = 1;
+    bool has_next = 2;
+    bool has_previous = 3;
+    int32 next_page = 4;
+    int32 previous_page = 5;
+    int32 total_pages = 6;
+    int64 total_elements = 7;
+}
+
+message UpdateCardResponse {
+
+}
+
+message CreateCardResponse {
+    CardDto card = 1;
+}
+
+
